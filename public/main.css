@@ -2,28 +2,36 @@ body {}
 * {
   font-family: 'Roboto', Helvetica, sans-serif;
 }
+.container {
+  margin: 10px auto;
+  max-width: 600px;
+  width: 100%;
+}
+.container > * {
+  margin: 0 10px;
+}
 header {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
 }
 header h1 {
   margin-right: 20px;
 }
-#addForm {
+form {
   display: flex;
   flex: 1 50%;
   flex-flow: row nowrap;
 }
-#addForm * {
+form * {
   font-size: 1em;
   padding: 10px;
 }
-#addForm input {
+form input {
   border: 1px solid lightgray;
   border-right: 0;
   flex: 1 50%;
 }
-#addForm button {
+form button {
   padding: 10px 20px;
 }
 .todoItem {
