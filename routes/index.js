@@ -3,7 +3,9 @@ const models = require('../models/index')
 const router = express.Router()
 
 router.get('/', function(req, res) {
-  models.Todo.findAll()
+  models.Todo.findAll({
+    order: ['createdAt']
+  })
   .then(function(data) {
       res.render('index', {data: data})
     })
