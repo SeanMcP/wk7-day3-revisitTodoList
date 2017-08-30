@@ -5,7 +5,6 @@ const router = express.Router()
 router.get('/', function(req, res) {
   models.Todo.findAll()
   .then(function(data) {
-      console.log('get / data:\n', data)
       res.render('index', {data: data})
     })
     .catch(function(err) {
@@ -18,13 +17,44 @@ router.post('/create', function(req, res) {
     title: req.body.title
   })
   .then(function(data) {
-    console.log('post /create data:\n', data)
     res.redirect('/')
   })
 })
 
+// ********************************
+// Delete
+// ******************************** //
+
+router.get('/delete/:id', function(req, res) {
+  models.Todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(function(data) {
+    res.redirect('/')
+  })
+})
+
+// ********************************
+// Check and Uncheck
+// ******************************** //
+
 router.get('/check/:id', function(req, res) {
-  
+  models.Todo.update({
+    completedAt: Date.now(),
+  }, { where: { id: req.params.id } })
+  .then(function(data) {
+    res.redirect('/')
+  })
+})
+router.get('/uncheck/:id', function(req, res) {
+  models.Todo.update({
+    completedAt: null,
+  }, { where: { id: req.params.id } })
+  .then(function(data) {
+    res.redirect('/')
+  })
 })
 
 module.exports = router

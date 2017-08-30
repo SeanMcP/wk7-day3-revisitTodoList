@@ -13,7 +13,14 @@
 </section>
 <section id="complete">
   <h2>Done</h2>
-  {{#completedAt}}
-    {{title}}
-  {{/completedAt}}
+  {{#data}}
+    {{#completedAt}}
+      <div class="todoItem">
+        <a class="checkbox" href="/uncheck/{{id}}">&#10003;</a>
+        <del>{{title}}</del>
+        <a class="edit" href="/edit/{{id}}">Edit</a>
+        <a class="delete" href="/delete/{{id}}">Delete</a>
+      </div>
+    {{/completedAt}}
+  {{/data}}
 </section>
