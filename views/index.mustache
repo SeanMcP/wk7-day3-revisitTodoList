@@ -1,6 +1,19 @@
 <section id="incomplete">
   <h2>Todo</h2>
+  {{#data}}
+    {{^completedAt}}
+      <div class="todoItem">
+        <a class="checkbox" href="/check/{{id}}">&#10003;</a>
+        {{title}}
+        <a class="edit" href="/edit/{{id}}">Edit</a>
+        <a class="delete" href="/delete/{{id}}">Delete</a>
+      </div>
+    {{/completedAt}}
+  {{/data}}
 </section>
 <section id="complete">
   <h2>Done</h2>
+  {{#completedAt}}
+    {{title}}
+  {{/completedAt}}
 </section>
