@@ -61,4 +61,24 @@ router.get('/delete/:id', function(req, res) {
 // Edit
 // ******************************** //
 
+router.get('/edit/:id', function(req, res) {
+  models.Todo.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(function(data) {
+    res.render('edit', { data: data})
+  })
+})
+
+router.post('/edit/:id', function(req, res) {
+  models.Todo.update({
+    title: req.body.title
+  }, { where: { id: req.params.id } })
+  .then(function(data) {
+    res.redirect('/')
+  })
+})
+
 module.exports = router
