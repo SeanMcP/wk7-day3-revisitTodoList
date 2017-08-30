@@ -26,3 +26,11 @@ header h1 {
 #addForm button {
   padding: 10px 20px;
 }
+.todoItem {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.todoItem p {
+  flex: 1 50%;
+}

@@ -12,7 +12,7 @@
       {{^completedAt}}
         <div class="todoItem">
           <a class="checkbox" href="/check/{{id}}"><i class="material-icons">done</i></a>
-          {{title}}
+          <p>{{title}}</p>
           <a class="edit" href="/edit/{{id}}"><i class="material-icons">create</i></a>
           <a class="delete" href="/delete/{{id}}"><i class="material-icons">clear</i></a>
         </div>
@@ -21,11 +21,12 @@
   </section>
   <section id="complete">
     <h2>Done</h2>
+    <!-- <p><a href="/delete-done">Delete all</a></p> -->
     {{#data}}
       {{#completedAt}}
         <div class="todoItem">
           <a class="checkbox" href="/uncheck/{{id}}"><i class="material-icons">done</i></a>
-          <del>{{title}}</del>
+          <p><del>{{title}}</del></p>
           <a class="edit" href="/edit/{{id}}"><i class="material-icons">create</i></a>
           <a class="delete" href="/delete/{{id}}"><i class="material-icons">clear</i></a>
         </div>

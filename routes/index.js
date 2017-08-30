@@ -14,7 +14,8 @@ router.get('/', function(req, res) {
 
 router.post('/create', function(req, res) {
   models.Todo.create({
-    title: req.body.title
+    title: req.body.title,
+    isComplete: false,
   })
   .then(function(data) {
     res.redirect('/')
@@ -27,7 +28,8 @@ router.post('/create', function(req, res) {
 
 router.get('/check/:id', function(req, res) {
   models.Todo.update({
-    completedAt: Date.now(),
+    isComplete: true,
+    completedAt: Date.now()
   }, { where: { id: req.params.id } })
   .then(function(data) {
     res.redirect('/')
@@ -35,7 +37,8 @@ router.get('/check/:id', function(req, res) {
 })
 router.get('/uncheck/:id', function(req, res) {
   models.Todo.update({
-    completedAt: null,
+    isComplete: false,
+    completedAt: null
   }, { where: { id: req.params.id } })
   .then(function(data) {
     res.redirect('/')
@@ -50,6 +53,17 @@ router.get('/delete/:id', function(req, res) {
   models.Todo.destroy({
     where: {
       id: req.params.id
+    }
+  })
+  .then(function(data) {
+    res.redirect('/')
+  })
+})
+
+router.get('/delete-done', function(req, res) {
+  models.Todo.destroy({
+    where: {
+      isComplete: true
     }
   })
   .then(function(data) {
