@@ -65,7 +65,9 @@ router.get('/delete/:id', function(req, res) {
 router.get('/delete-done', function(req, res) {
   models.Todo.destroy({
     where: {
-      isComplete: true
+      completedAt: {
+        $ne: null
+      }
     }
   })
   .then(function(data) {
