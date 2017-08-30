@@ -1,26 +1,35 @@
-<section id="incomplete">
-  <h2>Todo</h2>
-  {{#data}}
-    {{^completedAt}}
-      <div class="todoItem">
-        <a class="checkbox" href="/check/{{id}}">&#10003;</a>
-        {{title}}
-        <a class="edit" href="/edit/{{id}}">Edit</a>
-        <a class="delete" href="/delete/{{id}}">Delete</a>
-      </div>
-    {{/completedAt}}
-  {{/data}}
-</section>
-<section id="complete">
-  <h2>Done</h2>
-  {{#data}}
-    {{#completedAt}}
-      <div class="todoItem">
-        <a class="checkbox" href="/uncheck/{{id}}">&#10003;</a>
-        <del>{{title}}</del>
-        <a class="edit" href="/edit/{{id}}">Edit</a>
-        <a class="delete" href="/delete/{{id}}">Delete</a>
-      </div>
-    {{/completedAt}}
-  {{/data}}
-</section>
+<header>
+  <h1>My Todo List (with Sequelize)</h1>
+  <form id="addForm" action="/create" method="post">
+    <input type="text" name="title" value="" placeholder="What do you have todo?">
+    <button type="submit" name="button">Add</button>
+  </form>
+</header>
+<main>
+  <section id="incomplete">
+    <h2>Todo</h2>
+    {{#data}}
+      {{^completedAt}}
+        <div class="todoItem">
+          <a class="checkbox" href="/check/{{id}}">&#10003;</a>
+          {{title}}
+          <a class="edit" href="/edit/{{id}}">Edit</a>
+          <a class="delete" href="/delete/{{id}}">Delete</a>
+        </div>
+      {{/completedAt}}
+    {{/data}}
+  </section>
+  <section id="complete">
+    <h2>Done</h2>
+    {{#data}}
+      {{#completedAt}}
+        <div class="todoItem">
+          <a class="checkbox" href="/uncheck/{{id}}">&#10003;</a>
+          <del>{{title}}</del>
+          <a class="edit" href="/edit/{{id}}">Edit</a>
+          <a class="delete" href="/delete/{{id}}">Delete</a>
+        </div>
+      {{/completedAt}}
+    {{/data}}
+  </section>
+</main>

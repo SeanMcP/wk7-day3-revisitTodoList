@@ -22,21 +22,6 @@ router.post('/create', function(req, res) {
 })
 
 // ********************************
-// Delete
-// ******************************** //
-
-router.get('/delete/:id', function(req, res) {
-  models.Todo.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(function(data) {
-    res.redirect('/')
-  })
-})
-
-// ********************************
 // Check and Uncheck
 // ******************************** //
 
@@ -56,5 +41,24 @@ router.get('/uncheck/:id', function(req, res) {
     res.redirect('/')
   })
 })
+
+// ********************************
+// Delete
+// ******************************** //
+
+router.get('/delete/:id', function(req, res) {
+  models.Todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(function(data) {
+    res.redirect('/')
+  })
+})
+
+// ********************************
+// Edit
+// ******************************** //
 
 module.exports = router
